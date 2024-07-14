@@ -100,7 +100,7 @@ public class User implements UserDetails, Principal {
         return Principal.super.implies(subject);
     }
 
-    private String fullName(){
+    public String fullName(){
         return firstname + " " + lastname;
     }
 
