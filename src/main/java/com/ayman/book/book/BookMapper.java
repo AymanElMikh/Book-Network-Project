@@ -1,6 +1,7 @@
 package com.ayman.book.book;
 
 import com.ayman.book.file.FileUtils;
+import com.ayman.book.history.BookTransactionHistory;
 
 public class BookMapper {
     public Book toBook(BookRequest request) {
@@ -30,4 +31,15 @@ public class BookMapper {
                 .build();
     }
 
+    public  BorrowedBookResponse toBorrowedBookRepsonse(BookTransactionHistory history) {
+        return BorrowedBookResponse.builder()
+                .id(history.getBook().getId())
+                .title(history.getBook().getTitle())
+                .authorName(history.getBook().getAuthorName())
+                .isbn(history.getBook().getIsbn())
+                .rate(history.getBook().getRate())
+                .returned(history.isReturnApproved())
+                .returnApproved(history.isReturnApproved())
+                .build();
+    }
 }
